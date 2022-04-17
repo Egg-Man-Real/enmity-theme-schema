@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$comment": "https://github.com/compilekaiten/enmity-Themes-Color-Map",
   "title": "Enmity theme specification",
+  "description": "Credits for [color descriptions](https://github.com/compilekaiten/enmity-Themes-Color-Map) goes to NEO#7154/compilekaiten.",
   "definitions": {
     "hex_color": {
       "type": "string",
