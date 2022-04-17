@@ -59,7 +59,7 @@ jobs:
             Test-Json -Json (Invoke-WebRequest -UseBasicParsing $_) -SchemaFile ./enmity-theme.schema.json > $null
           } catch {
             $success = $false
-            Write-Output "Validation of $_ failed"
+            Write-Output "Validation of schema failed"
             Write-Output $_
           }
         }
@@ -73,7 +73,6 @@ jobs:
         $failed = $false
         $knownBadThemes = @(
                             "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/DarkDiscord.json",
-                            "https://raw.githubusercontent.com/compilekaiten/Enmity-Themes/c1f6b4f259c0d072b6ddf703b0069db5340c4ad7/Nord/Nord.json"
                            )
         $knownBadThemes | ForEach-Object {
           Write-Output "Validating $_ against schema"
