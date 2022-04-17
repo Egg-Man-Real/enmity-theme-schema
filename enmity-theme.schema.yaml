@@ -23,8 +23,6 @@ definitions:
   transparent_color:
     type: string
     description: |
-      **[Deprecated] Use `rgba(0, 0, 0, 0)` instead.**
-      
       Special keyword to mark a color as fully transparent.
     deprecated: true
     pattern: ^transparent$
