@@ -1,0 +1,45 @@
+name: Test schema
+
+on:
+  push:
+    paths:
+    - 'enmity-theme.schema.json'
+    - 'sample.json'
+    - '.github/workflows/test.yaml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    -
+      uses: actions/checkout@v3
+    - 
+      name: Validate sample.json against schema
+      shell: pwsh
+      run: |
+        Test-Json -Json (Get-Content .\sample.json | Out-String) -SchemaFile .\enmity-theme.schema.json
+    -
+      name: Validate published themes against schema
+      shell: pwsh
+      run: |
+        $knownThemes = @("https://raw.githubusercontent.com/compilekaiten/Enmity-Themes/main/Zelk/Zelk.json",
+                         "https://raw.githubusercontent.com/pwnPwner/catppuccin/main/catppuccin.json",
+                         "https://rosieorthinanos.dev/Emerald.json",
+                         "https://rosieorthinanos.dev/Orthinanos.json",
+                         "https://raw.githubusercontent.com/Leizurly/discord-sultan/main/sultan.json",
+                         "https://raw.githubusercontent.com/redstonetechwiz/pastelcord/main/discalm.json",
+                         "https://raw.githubusercontent.com/Leizurly/discord-flashbang/f047332d9b3baf83686c94979838a5da84876877/flashbang.json",
+                         "https://raw.githubusercontent.com/sudo9000/enmity-BozoTheClown-Theme/master/BozoTheClown.json",
+                         "https://static.itsnebula.net/lotus.json",
+                         "https://static.itsnebula.net/tokyonight.json",
+                         "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/DarkDiscord.json",
+                         "https://raw.githubusercontent.com/compilekaiten/enmity-Nord-Theme/main/Nord.json",
+                         "https://static.itsnebula.net/mist.json",
+                         "https://static.itsnebula.net/mars.json",
+                         "https://static.itsnebula.net/dracula.json",
+                         "https://raw.githubusercontent.com/sudo9000/enmity-Blu-Theme/master/Blu.json",
+                         "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/AMOLED.json")
+        $knownThemes | ForEach-Object {
+          Write-Output "Validating $_ against schema"
+          Test-Json -Json (Invoke-WebRequest -UseBasicParsing $_) -SchemaFile ./enmity-theme.schema.json > $null
+        }

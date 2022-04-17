@@ -1,0 +1,325 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$comment": "https://github.com/compilekaiten/enmity-Themes-Color-Map",
+  "definitions": {
+    "hex_color": {
+      "type": "string",
+      "comment": "While Enmity does take #RRGGBBAA values, the alpha value is ignored when converting.",
+      "pattern": "#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})" 
+    },
+    "rgba_color": {
+      "type": "string",
+      "pattern": "rgba\\(((25[0-5]|2[0-4]\\d|1\\d{2}|0?\\d?\\d),\\s*){3}(1|0|0?\\.\\d+)\\)"
+    },
+    "color": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/hex_color"
+        },
+        {
+          "$ref": "#/definitions/rgba_color"
+        },
+        {
+          "type": "string",
+          "pattern": "^transparent$"
+        }
+      ]
+    },
+    "color_array": {
+      "type": "array",
+      "description": "First item is color for dark mode, second is color for light mode",
+      "items": {
+        "$ref": "#/definitions/color"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "theme_color_map": {
+      "type": "object",
+      "description": "Properties that themes text and most background elements",
+      "properties": {
+        "KEYBOARD": {
+          "description": "Global keyboard background color",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_PRIMARY": {
+          "description": "Main background (DMs, channels, user list, friends tab, search tab, mentions tab, user profiles, action sheets/popups)",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_SECONDARY": {
+          "description": "Background for:\n- Top left button\n- Join Server button\n- Call and Message buttons in profile\n- Missed Call\n- Code block\n- Profile/server info bottom\n- Reactions button\n- Embed\n- Slash Command top bar\n- @user background\n- Emote picker",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_SECONDARY_ALT": {
+          "description": "Background for:\n- Profile notes\n- About Me\n- Chat input (including attachments/gift buttons)\n- Emote category picker",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_TERTIARY": {
+          "description": "Global Border background when elements are slide out [Server List, User List], Search Bar background, Profile [About Me and Notes outline], Spoilers background, Top bar seperator when in channel, Settings options boxes seperator, Three Dots Button [Profiles, Search]",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_ACCENT": {
+          "description": "Reply Pipe, Edit user Profile button, Album Buttons, Thread Buttons, Sometimes flashes this color when stuff loads",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_FLOATING": {
+          "description": "Profile Top background, Server Boost Page Icons",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_NESTED_FLOATING": {
+          "description": "Setting buttons/boxes background",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_MOBILE_PRIMARY": {
+          "description": "Account/settings background",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_MOBILE_SECONDARY": {
+          "description": "Channel List/DM Background, Global Header Color, Online status, Background in chat input",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_MODIFIER_ACCENT": {
+          "description": "Seperators [Server List Top, Bottom Bar, Server Info, User List, User Info, @, Notifications, Friends, Search, Settings]",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_MODIFIER_ACTIVE": {
+          "description": "Background color when clicking/holding a button [DM User, Channel, Server, Rectangle Buttons]",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_MODIFIER_SELECTED": {
+          "description": "Background color of selected User or Channel",
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_MODIFIER_HOVER": {
+          "$ref": "#/definitions/color_array"
+        },
+        "CHANNELS_DEFAULT": {
+          "description": "Unselected DM User text color[including status], Server Category text color",
+          "$ref": "#/definitions/color_array"
+        },
+        "HEADER_PRIMARY": {
+          "description": "Top Bar Text Color [Direct Messages, DM User name, Server Name, Channel name, User list, Friends Tab, Mentions Tab & channel name text, Settings titles], Server Info Name, User info name, Follow channels text, Invite members text, slash command text, Some pop-up text (add theme)",
+          "$ref": "#/definitions/color_array"
+        },
+        "HEADER_SECONDARY": {
+          "description": "User Discord ID #s, User Text [Connections, About me, Notes], Server description [online and member count], User list status text [Listening, playing, etc], User list subtitles, Slash Command subtitles, Search titles, Most settings titles",
+          "$ref": "#/definitions/color_array"
+        },
+        "INTERACTIVE_ACTIVE": {
+          "description": "Selected Server bar, Selected user text DMs, Selected Channel text, Unread Channel text and dot, @ user name text, # channel text, bottom bar icon fill, some random titles",
+          "$ref": "#/definitions/color_array"
+        },
+        "INTERACTIVE_MUTED": {
+          "description": "Unselected muted channel text, block quote bar",
+          "$ref": "#/definitions/color_array"
+        },
+        "INTERACTIVE_NORMAL": {
+          "description": "Button/Glyph accent colors [Top left button glyph, 3 bars, Call, Video, User list], User list [Threads, Pins, Notifs, Settings, Role names], User Info [Message, Call, Video], Server Info [Boost Text, Invite, Notifs], Channel [Search, User list, Add Files, Gift, Emoji buttons, add reactions], Slash Command title, Emoji bottom bar glyph color, # channel glyphs], bottom bar inactive icon fill, incoming typing member text",
+          "$ref": "#/definitions/color_array"
+        },
+        "TEXT_DANGER": {
+          "description": "Enmity Theme/Plugin Uninstall text",
+          "$ref": "#/definitions/color_array"
+        },
+        "TEXT_LINK": {
+          "description": "Link text global",
+          "$ref": "#/definitions/color_array"
+        },
+        "TEXT_MUTED": {
+          "description": "Search bar text, timestamp, chat input text, @ user #id, Slash command owner text, Symbols [@, Lock, # (except muted channels)], various subtitles [settings, server info], Emoji/GIF/Stickers slider text",
+          "$ref": "#/definitions/color_array"
+        },
+        "TEXT_NORMAL": {
+          "description": "Global text color [DMs, Channels, Typing text, Server info boxes text, User info boxes text, Settings text]",
+          "$ref": "#/definitions/color_array"
+        },
+        "INTERACTIVE_HOVER": {
+          "$ref": "#/definitions/color_array"
+        },
+        "BACKGROUND_MESSAGE_HOVER": {
+          "$ref": "#/definitions/color_array"
+        },
+        "GUILD_HEADER_TEXT_SHADOW": {
+          "$ref": "#/definitions/color_array"
+        },
+        "CHANNELTEXTAREA_BACKGROUND": {
+          "$ref": "#/definitions/color_array"
+        },
+        "DEPRECATED_STORE_BG": {
+          "$ref": "#/definitions/color_array"
+        },
+        "ACTIVITY_CARD_BACKGROUND": {
+          "$ref": "#/definitions/color_array"
+        },
+        "TEXTBOX_MARKDOWN_SYNTAX": {
+          "$ref": "#/definitions/color_array"
+        }
+      },
+      "required": [
+        "BACKGROUND_PRIMARY"
+      ],
+      "patternProperties": {
+        "^TEXT(_LINK_LOW_SATURATION|_POSITIVE|_WARNING)$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^INFO_(POSITIVE|WARNING|DANGER|HELP)_(FOREGROUND|BACKGROUND|TEXT)$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^STATUS_(POSITIVE|WARNING|DANGER)_(FOREGROUND|BACKGROUND|TEXT)$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^SCROLLBAR_(AUTO(_SCROLLBAR_COLOR)?|THIN)_(THUMB|TRACK)$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^ELEVATION_(STROKE|LOW|MEDIUM|HIGH)$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^(LOGO|FOCUS)_PRIMARY$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^CONTROL_BRAND_FOREGROUND(_NEW)?$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^BACKGROUND_MENTIONED(_HOVER)?$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^DEPRECATED_CARD(_EDITABLE)?_BG$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^DEPRECATED_QUICKSWITCHER_INPUT_(BACKGROUND|PLACEHOLDER)$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^DEPRECATED_TEXT_INPUT_(BG|BORDER|PREFIX)$": {
+          "$ref": "#/definitions/color_array"
+        },
+        "^DEPRECATED_TEXT_INPUT_BORDER_(HOVER|DISABLED)$": {
+          "$ref": "#/definitions/color_array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "colours": {
+      "type": "object",
+      "description": "Colors used throughout Discord",
+      "properties": {
+        "PRIMARY_DARK": {
+          "description": "Profile Notes text, Popup box separators",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_100": {
+          "description": "Popup text color, search bar cursor color",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_300": {
+          "description": "Grabber color, glyph color, \"No Pinned Messages\" text, Channel Settings channel name, Connections text color",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_360": {
+          "description": "Unselected and unread and unmuted channel name text",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_400": {
+          "description": "Different Day Message seperator, Search tab subtext, 2FA text, 'New Unreads' banner, @ user name text color",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_500": {
+          "description": "Invite Button background, User Watch Live button, Default (grey) Role circle color, \"Public\" server button",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_600": {
+          "description": "Chat Input Border Background fill, Global? pop up background",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_630": {
+          "description": "Hold/Click on message background, Slash Command background, Search in Channel background, Spotify Now playing scrubber bar",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_700": {
+          "description": "Top and Bottom bar Seperators, Global Toast Background, Role Background color, Side of screen flashes this color sometimes ???",
+          "$ref": "#/definitions/color"
+        },
+        "PRIMARY_DARK_800": {
+          "description": "The Entire Bottom bar (and homebar) [Discord Icon, People Icon, Profile, etc.], Tints GIF categories in search",
+          "$ref": "#/definitions/color"
+        },
+        "BRAND_NEW": {
+          "description": "Top left button background, New message Top banner, Floating new message banner progress bar, Global Switch color, Send button background, bot tag background, add to server button",
+          "$ref": "#/definitions/color"
+        },
+        "BRAND_NEW_360": {
+          "description": "Random Nitro stuff. Who cares",
+          "$ref": "#/definitions/color"
+        },
+        "WHITE": {
+          "description": "Top Left button icon fill, DMs username text, Server invite button text, No Role or default color role (grey) username color, User profile role text color, global spinners, Send button glyph, global cursor color, bot tag text color, add files button text color, GIF text, server with banner text and 3 dots, public server text, channel search text, (edited text subscript), follow channel text color",
+          "$ref": "#/definitions/color"
+        },
+        "TRANSPARENT": {
+          "$ref": "#/definitions/color"
+        }
+      },
+      "required": [
+        "PRIMARY_DARK"
+      ],
+      "patternProperties": {
+        "^STATUS_(RED|YELLOW|GREEN|GREY|ORANGE)(_[1-8][036]0|_900)?$": {
+          "description": "Various colored elements like logout text, security text. Pain in the ass. good luck",
+          "$ref": "#/definitions/color"
+        },
+        "^(WHITE|BLACK)(_[1-8][036]0|_900)?$": {
+          "$ref": "#/definitions/color"
+        },
+        "^(PRIMARY_(LIGHT|DARK)|BRAND|BRAND_NEW|FOCUS_PRIMARY|LINK(_LOW_SATURATION|_LIGHT)?)(_[1-8][036]0|_900)?$": {
+          "$ref": "#/definitions/color"
+        },
+        "^PREMIUM_TIER_2_(PURPLE|PINK)(_500)?$": {
+          "$ref": "#/definitions/color"
+        },
+        "^PREMIUM_TIER_1_(PURPLE|BLUE)(_500)?$": {
+          "$ref": "#/definitions/color"
+        },
+        "^PREMIUM_GUILD_(PURPLE|PINK|BLUE)(_500)?$": {
+          "$ref": "#/definitions/color"
+        },
+        "^HYPESQUAD_HOUSE_[1-3](_500)?$": {
+          "$ref": "#/definitions/color"
+        },
+        "^CREATOR_REVENUE_(START|END)(_500)?$": {
+          "$ref": "#/definitions/color"
+        },
+        "^(GOLD|PARTNER|SKYPE|BATTLENET|STEAM|LOL|TWITCH|YOUTUBE|TWITTER|REDDIT|SPOTIFY|FACEBOOK|SAMSUNG|XBOX|GITHUB)(_500)?$": {
+          "$ref": "#/definitions/color"
+        }
+      },
+      "additionalProperties": false
+    },
+    "unsafe_colors": {
+      "type": "object",
+      "description": "Unsafe colors, themes the grey bar under the keyboard (for now)",
+      "properties": {
+        "CHAT_GREY": {
+          "description": "homebar annoying ass grey bar color",
+          "$ref": "#/definitions/color"
+        }
+      },
+      "required": [
+        "CHAT_GREY"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "name",
+    "theme_color_map",
+    "colours"
+  ],
+  "additionalProperties": false
+}

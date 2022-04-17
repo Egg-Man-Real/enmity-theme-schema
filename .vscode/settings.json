@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/sample.json"
+            ],  
+            "url": "./enmity-theme.schema.json"
+        }
+    ]
+}
