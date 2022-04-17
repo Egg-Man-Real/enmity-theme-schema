@@ -72,7 +72,7 @@ jobs:
       run: |
         $failed = $false
         $knownBadThemes = @(
-                            "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/DarkDiscord.json",
+                            "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/DarkDiscord.json"
                            )
         $knownBadThemes | ForEach-Object {
           Write-Output "Validating $_ against schema"
