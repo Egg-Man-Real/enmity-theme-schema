@@ -22,6 +22,7 @@ jobs:
       name: Validate published themes against schema
       shell: pwsh
       run: |
+        $success = $true
         $knownThemes = @("https://raw.githubusercontent.com/compilekaiten/Enmity-Themes/main/Zelk/Zelk.json",
                          "https://raw.githubusercontent.com/pwnPwner/catppuccin/main/catppuccin.json",
                          "https://rosieorthinanos.dev/Emerald.json",
@@ -33,7 +34,6 @@ jobs:
                          "https://static.itsnebula.net/lotus.json",
                          "https://static.itsnebula.net/tokyonight.json",
                          "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/DarkDiscord.json",
-                         "https://raw.githubusercontent.com/compilekaiten/enmity-Nord-Theme/main/Nord.json",
                          "https://static.itsnebula.net/mist.json",
                          "https://static.itsnebula.net/mars.json",
                          "https://static.itsnebula.net/dracula.json",
@@ -44,7 +44,9 @@ jobs:
           try {
             Test-Json -Json (Invoke-WebRequest -UseBasicParsing $_) -SchemaFile ./enmity-theme.schema.json > $null
           } catch {
+            $success = $false
             Write-Output "Validation of $_ failed"
             Write-Output $_
           }
         }
+        exit $success
