@@ -66,7 +66,7 @@ jobs:
             Test-Json -Json (Invoke-WebRequest -UseBasicParsing $_) -SchemaFile ./enmity-theme.schema.json > $null
           } catch {
             $failed = $true
-            Write-Output "Validation of $_ failed (expected)"
+            Write-Output "Validation of schema failed (expected)"
             Write-Output $_
           }
         }
