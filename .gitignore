@@ -158,5 +158,7 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/Python
 
-public/
+public/*
+!public/css
+!public/schema_doc.css
 enmity-theme.schema.json

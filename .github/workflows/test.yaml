@@ -120,6 +120,7 @@ jobs:
           env/bin/generate-schema-doc --config expand_buttons=true \
                                       --config link_to_reused_ref=false \
                                       --config deprecated_from_description=true \
+                                      --config copy_css=false
                                       enmity-theme.schema.yaml public/index.html
       -
         name: Publish to GitHub Pages
