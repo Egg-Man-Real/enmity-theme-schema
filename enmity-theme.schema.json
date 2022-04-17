@@ -1,15 +1,22 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$comment": "https://github.com/compilekaiten/enmity-Themes-Color-Map",
+  "title": "Enmity theme specification",
   "definitions": {
     "hex_color": {
       "type": "string",
-      "comment": "While Enmity does take #RRGGBBAA values, the alpha value is ignored when converting.",
+      "description": "While Enmity does take #RRGGBBAA values, the alpha value is ignored when converting.",
       "pattern": "#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})" 
     },
     "rgba_color": {
       "type": "string",
+      "description": "Similar to CSS's `rgba()`, but Enmity only accepts `rgba(r, g, b, a)`, not `rgba(r g b a)` or `rgba(r g b / a)`.",
       "pattern": "rgba\\(((25[0-5]|2[0-4]\\d|1\\d{2}|0?\\d?\\d),\\s*){3}(1|0|0?\\.\\d+)\\)"
+    },
+    "transparent_color": {
+      "type": "string",
+      "pattern": "^transparent$",
+      "description": "Special keyword to mark a color as fully transparent."
     },
     "color": {
       "oneOf": [
@@ -20,8 +27,7 @@
           "$ref": "#/definitions/rgba_color"
         },
         {
-          "type": "string",
-          "pattern": "^transparent$"
+          "$ref": "#/definitions/transparent_color"
         }
       ]
     },

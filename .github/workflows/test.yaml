@@ -74,3 +74,36 @@ jobs:
         if (-not $failed) {
           throw "Bad theme was successfully validated"
         }
+  build-docs:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        uses: actions/checkout@v3
+      -
+        uses: actions/setup-python@v3
+      - 
+        name: Setup JSON Schema for Humans
+        run: |
+          python -m venv env/ && source env/bin/activate
+          pip install json-schema-for-humans
+      -
+        name: Build schema website
+        run: |
+          mkdir -p publish
+          env/bin/generate-schema-doc --config expand_buttons=true --config link_to_reused_ref=false enmity-theme.schema.json public/index.html
+          cp enmity-theme.schema.json public/
+          touch public/.nojekyll
+      -
+        name: Publish to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        if: github.ref == 'refs/heads/main'
+        with:
+          branch: gh-pages
+          folder: public
+          git-config-name: GitHub Actions
+          git-config-email: github-actions[bot]@users.noreply.github.com
+          single-commit: true
+
+
+
