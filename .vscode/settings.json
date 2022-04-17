@@ -4,7 +4,7 @@
             "fileMatch": [
                 "/sample.json"
             ],  
-            "url": "./enmity-theme.schema.json"
+            "url": "https://beerpiss.github.io/enmity-theme-schema/enmity-theme.schema.json"
         }
     ],
     "editor.rulers": [
