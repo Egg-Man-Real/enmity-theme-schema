@@ -4,7 +4,7 @@
   "author": "ur_mom#42069",
   "theme_color_map": {
     "HEADER_PRIMARY": [
-      "transparent",
+      "rgba(0, 0, 0, 0)",
       "#FFFFFF"
     ],
     "HEADER_SECONDARY": [
