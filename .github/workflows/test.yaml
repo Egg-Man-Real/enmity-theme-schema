@@ -19,6 +19,7 @@ jobs:
       name: Convert schema to JSON
       shell: pwsh
       run: | 
+        pip install pyyaml
         python -c @"
         import json, yaml
         with open('enmity-theme.schema.json', 'w') as f, open('enmity-theme.schema.yaml') as fp:
@@ -102,7 +103,7 @@ jobs:
       -
         name: Convert schema to JSON
         shell: pwsh
-        run: | 
+        run: |
           python -c @"
           import json, yaml
           with open('enmity-theme.schema.json', 'w') as f, open('enmity-theme.schema.yaml') as fp:
