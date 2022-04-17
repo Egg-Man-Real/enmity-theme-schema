@@ -3,9 +3,9 @@ name: Test schema
 on:
   push:
     paths:
-    - 'enmity-theme.schema.json'
-    - 'sample.json'
-    - '.github/workflows/test.yaml'
+    - "enmity-theme.schema.json"
+    - "sample.json"
+    - ".github/workflows/test.yaml"
 
 jobs:
   test:
