@@ -14,6 +14,18 @@ jobs:
     -
       uses: actions/checkout@v3
     - 
+      uses: actions/setup-python@v3
+    -
+      name: Convert schema to JSON
+      shell: pwsh
+      run: | 
+        python -c @"
+        import json, yaml
+        with open('enmity-theme.schema.json', 'w') as f, open('enmity-theme.schema.yaml') as fp:
+            f.write(json.dumps(yaml.safe_load(fp)))
+        "@
+
+    - 
       name: Validate sample.json against schema
       shell: pwsh
       run: |
@@ -86,12 +98,21 @@ jobs:
         name: Setup JSON Schema for Humans
         run: |
           python -m venv env/ && source env/bin/activate
-          pip install json-schema-for-humans
+          pip install json-schema-for-humans pyyaml
+      -
+        name: Convert schema to JSON
+        shell: pwsh
+        run: | 
+          python -c @"
+          import json, yaml
+          with open('enmity-theme.schema.json', 'w') as f, open('enmity-theme.schema.yaml') as fp:
+              f.write(json.dumps(yaml.safe_load(fp)))
+          "@
       -
         name: Build schema website
         run: |
           mkdir -p public
-          env/bin/generate-schema-doc --config expand_buttons=true --config link_to_reused_ref=false enmity-theme.schema.json public/index.html
+          env/bin/generate-schema-doc --config expand_buttons=true --config link_to_reused_ref=false enmity-theme.schema.yaml public/index.html
           cp enmity-theme.schema.json public/
           touch public/.nojekyll
       -

@@ -6,5 +6,6 @@
             ],  
             "url": "./enmity-theme.schema.json"
         }
-    ]
+    ],
+    "editor.rulers": [100]
 }
