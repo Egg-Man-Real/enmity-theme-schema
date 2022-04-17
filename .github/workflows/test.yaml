@@ -51,7 +51,8 @@ jobs:
                          "https://static.itsnebula.net/mars.json",
                          "https://static.itsnebula.net/dracula.json",
                          "https://raw.githubusercontent.com/sudo9000/enmity-Blu-Theme/master/Blu.json",
-                         "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/AMOLED.json"
+                         "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/AMOLED.json",
+                         "https://rosieorthinanos.dev/Solar.json"
                         )
         $knownThemes | ForEach-Object {
           Write-Output "Validating $_ against schema"
