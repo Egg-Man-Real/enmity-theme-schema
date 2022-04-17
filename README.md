@@ -5,7 +5,7 @@ A schema to aid in writing themes for [Enmity](https://github.com/enmity-mod).
 ## Usage
 - Assign the theme file to the schema:
 
-<detail>
+<details>
     <summary>Visual Studio Code</summary>
 
 ```json
@@ -21,9 +21,9 @@ A schema to aid in writing themes for [Enmity](https://github.com/enmity-mod).
     ]
 }
 ```
-</detail>
+</details>
 
-<detail>
+<details>
     <summary>Sublime Text (with LSP-json plugin)</summary>
 
 ```json
@@ -41,7 +41,7 @@ A schema to aid in writing themes for [Enmity](https://github.com/enmity-mod).
     }
 }
 ```
-</detail>
+</details>
 
 - Use an [online JSON schema validator](https://www.jsonschemavalidator.net/).
 
