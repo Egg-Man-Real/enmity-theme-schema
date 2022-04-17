@@ -11,6 +11,6 @@
         100
     ],
     "yaml.schemas": {
-        "http://json-schema.org/draft-07/schema": "file:///c%3A/Users/beerpiss/Documents/code/enmity-theme-schema/enmity-theme.schema.yaml"
+        "http://json-schema.org/draft-04/schema": "file:///c%3A/Users/beerpiss/Documents/code/enmity-theme-schema/enmity-theme.schema.yaml"
     }
 }
