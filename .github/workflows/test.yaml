@@ -6,6 +6,7 @@ on:
     - "enmity-theme.schema.json"
     - "sample.json"
     - ".github/workflows/test.yaml"
+  pull_request:
 
 jobs:
   test:
