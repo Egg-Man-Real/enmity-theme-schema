@@ -41,5 +41,10 @@ jobs:
                          "https://raw.githubusercontent.com/discord-modifications/enmity-addons/main/Themes/AMOLED.json")
         $knownThemes | ForEach-Object {
           Write-Output "Validating $_ against schema"
-          Test-Json -Json (Invoke-WebRequest -UseBasicParsing $_) -SchemaFile ./enmity-theme.schema.json > $null
+          try {
+            Test-Json -Json (Invoke-WebRequest -UseBasicParsing $_) -SchemaFile ./enmity-theme.schema.json > $null
+          } catch {
+            Write-Output "Validation of $_ failed"
+            Write-Output $_
+          }
         }
