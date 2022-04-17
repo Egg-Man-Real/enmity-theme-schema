@@ -44,14 +44,16 @@
   },
   "properties": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "description": "Name of the theme."
     },
     "author": {
-      "type": "string"
+      "type": "string",
+      "description": "Name of the author who made the theme."
     },
     "theme_color_map": {
       "type": "object",
-      "description": "Properties that themes text and most background elements",
+      "description": "Properties that themes text and most background elements. All of these support different light mode and dark mode colors.",
       "properties": {
         "KEYBOARD": {
           "description": "Global keyboard background color",
