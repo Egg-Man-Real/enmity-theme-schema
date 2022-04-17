@@ -3,7 +3,7 @@ name: Test schema
 on:
   push:
     paths:
-    - "enmity-theme.schema.json"
+    - "enmity-theme.schema.yaml"
     - "sample.json"
     - ".github/workflows/test.yaml"
   pull_request:
