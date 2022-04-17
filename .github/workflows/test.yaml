@@ -99,11 +99,12 @@ jobs:
         name: Setup JSON Schema for Humans
         run: |
           python -m venv env/ && source env/bin/activate
-          pip install json-schema-for-humans pyyaml
+          pip install json-schema-for-humans
       -
         name: Convert schema to JSON
         shell: pwsh
         run: |
+          pip install pyyaml
           python -c @"
           import json, yaml
           with open('enmity-theme.schema.json', 'w') as f, open('enmity-theme.schema.yaml') as fp:
