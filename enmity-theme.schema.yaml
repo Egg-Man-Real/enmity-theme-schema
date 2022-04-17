@@ -1,8 +1,10 @@
 $schema: http://json-schema.org/draft-04/schema
 $comment: https://github.com/compilekaiten/enmity-Themes-Color-Map
 title: Enmity theme specification
-description: Credits for [color descriptions](https://github.com/compilekaiten/enmity-Themes-Color-Map) 
-  goes to NEO#7154/compilekaiten.
+description: |
+  Credits for [color descriptions](https://github.com/compilekaiten/enmity-Themes-Color-Map) goes to NEO#7154/compilekaiten.
+  
+  Most pattern properties are there so the schema can be described fully; any key without a description should be considered "usage unknown".
 definitions:
   hex_color:
     type: string
