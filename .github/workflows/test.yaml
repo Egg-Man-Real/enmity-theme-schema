@@ -49,4 +49,6 @@ jobs:
             Write-Output $_
           }
         }
-        exit $success
+        if (-not $success) {
+          throw
+        }
