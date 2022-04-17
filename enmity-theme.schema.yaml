@@ -22,7 +22,11 @@ definitions:
     - rgba(255, 255, 255, 0.04)
   transparent_color:
     type: string
-    description: Special keyword to mark a color as fully transparent.
+    description: |
+      **[Deprecated] Use `rgba(0, 0, 0, 0)` instead.**
+      
+      Special keyword to mark a color as fully transparent.
+    deprecated: true
     pattern: ^transparent$
     examples: 
     - transparent
@@ -41,7 +45,6 @@ definitions:
     examples:
     - ["#2E3440", "#ECEFF4"]
     - ["rgba(46, 52, 64, 1)", "rgba(236, 239, 244, 1)"]
-    - ["transparent", "#FFFFFF"]
 properties:
   $schema:
     type: string

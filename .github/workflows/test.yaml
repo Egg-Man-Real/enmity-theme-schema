@@ -115,9 +115,12 @@ jobs:
         name: Build schema website
         run: |
           mkdir -p public
-          env/bin/generate-schema-doc --config expand_buttons=true --config link_to_reused_ref=false enmity-theme.schema.yaml public/index.html
           cp enmity-theme.schema.json public/
           touch public/.nojekyll
+          env/bin/generate-schema-doc --config expand_buttons=true \
+                                      --config link_to_reused_ref=false \
+                                      --config deprecated_from_description=true \
+                                      enmity-theme.schema.yaml public/index.html
       -
         name: Publish to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.2.5
