@@ -357,6 +357,7 @@ properties:
         type: string
         format: uri
         description: The URL of the image to use as background
+    additionalProperties: false
 required:
 - name
 - theme_color_map
