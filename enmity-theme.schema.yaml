@@ -6,6 +6,17 @@ description: |
   
   Most pattern properties are there so the schema can be described fully; any key without a description should be considered "usage unknown".
 definitions:
+  user:
+    type: object
+    properties: 
+      name: 
+        type: string
+        description: The name you want displayed in Enmity's settings
+      id:
+        type: string
+        description: Discord user ID associated with the name
+        pattern: '\d+'
+    additionalProperties: false
   hex_color:
     type: string
     description: > 
@@ -53,7 +64,33 @@ properties:
     description: Name of the theme.
   author:
     type: string
-    description: The author who made the theme.
+    description: The main author of the theme.
+  authors:
+    type: array
+    description: The author(s) who made the theme.
+    items: 
+      $ref: '#/definitions/user'
+  version:
+    type: string
+    description: Theme version
+  description:
+    type: string
+    description: A short description of the theme.
+  background:
+    type: object
+    description: Set an image background for your theme.
+    properties:
+      blur:
+        type: integer
+      alpha:
+        type: number
+        minimum: 0
+        maximum: 1
+      url: 
+        type: string
+        format: uri
+        description: The URL of the image to use as background
+    additionalProperties: false
   theme_color_map:
     type: object
     description: Properties that themes text and most background elements. All of these support 
@@ -207,6 +244,9 @@ properties:
         description: Global text color (DMs, Channels, Typing text, Server info boxes
           text, User info boxes text, Settings text)
         $ref: '#/definitions/color_array'
+      CHANNEL_ICON:
+        description: Color for channel Icons
+        $ref: '#/definitions/color_array'
       INTERACTIVE_HOVER:
         $ref: '#/definitions/color_array'
       BACKGROUND_MESSAGE_HOVER:
@@ -305,6 +345,9 @@ properties:
           text and 3 dots, public server text, channel search text, (edited text subscript),
           follow channel text color
         $ref: '#/definitions/color'
+      STATUS_YELLOW:
+        description: Mentions color (sidebar and tint)
+        $ref: '#/definitions/color'
       TRANSPARENT:
         $ref: '#/definitions/color'
     required:
@@ -343,6 +386,9 @@ properties:
     additionalProperties: false
 required:
 - name
+- authors
+- version
+- description
 - theme_color_map
 - colours
 additionalProperties: false
