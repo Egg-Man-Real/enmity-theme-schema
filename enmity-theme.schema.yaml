@@ -386,9 +386,6 @@ properties:
     additionalProperties: false
 required:
 - name
-- authors
-- version
-- description
 - theme_color_map
 - colours
 additionalProperties: false
