@@ -51,9 +51,18 @@ properties:
   name:
     type: string
     description: Name of the theme.
-  author:
-    type: string
-    description: The author who made the theme.
+  authors:
+    type: array
+    description: The author(s) who made this theme.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Discord username.
+        id:
+          type: string
+          description: Discord user ID.
   theme_color_map:
     type: object
     description: Properties that themes text and most background elements. All of these support 
