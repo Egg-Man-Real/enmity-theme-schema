@@ -753,5 +753,10 @@
   },
   "unsafe_colors": {
     "CHAT_GREY": "#000000"
+  },
+  "background": {
+    "blur": 5,
+    "url": "https://img.wallpapersafari.com/phone/750/1334/86/65/Eqt4y2.png",
+    "alpha": 0.5
   }
 }

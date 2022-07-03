@@ -341,6 +341,21 @@ properties:
     required:
     - CHAT_GREY
     additionalProperties: false
+  background:
+    type: object
+    description: Replaces the solid color background with an image!
+    properties: 
+      blur:
+        type: integer
+      alpha:
+        type: number
+        minimum: 0
+        maximum: 1
+      url: 
+        type: string
+        format: uri
+        description: The URL of the image to use as background
+    additionalProperties: false
 required:
 - name
 - theme_color_map
